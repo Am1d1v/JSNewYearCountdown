@@ -1,5 +1,6 @@
 
 
+const year = document.querySelector('#year');
 const days = document.querySelector('#days');
 const hours = document.querySelector('#hours');
 const minutes = document.querySelector('#minutes');
@@ -13,6 +14,8 @@ const newYearTime = new Date(`January 01 ${currentYear + 1} 00:00:00`);
 
 function updateCountdown(){
     const currentTime = new Date();
+
+    // Diffence between next year and current year
     const difference = newYearTime - currentTime;
 
     // Days
@@ -25,9 +28,11 @@ function updateCountdown(){
     const s = Math.floor((difference / 1000) % 60);
 
     days.textContent = d;
-    hours.textContent = h;
-    minutes.textContent = m;
-    seconds.textContent = s;
+    hours.textContent = h < 10 ? '0' + h : h;
+    minutes.textContent = m < 10 ? '0' + m : m;
+    seconds.textContent = s < 10 ? '0' + s : s;;
+
+    year.textContent = currentYear + 1;
 
     //console.log(d, h, m, s)
 }
